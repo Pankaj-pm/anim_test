@@ -1,3 +1,4 @@
+import 'package:anim_test/anim_build.dart';
 import 'package:anim_test/detail_page.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return AnimBuild();
+                  },
+                ));
+              },
+              icon: Icon(Icons.ac_unit)),
+        ],
       ),
       body: ListView.builder(
         itemCount: playlist.length,

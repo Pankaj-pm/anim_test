@@ -23,27 +23,33 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         title: Text("Text"),
         actions: [
-          TextButton(onPressed: () {
-            controller.animateTo(
-              0,
-              duration: Duration(seconds: 3),
-              curve: Curves.easeOutBack,
-            );
-          }, child: Text("Home")),
-          TextButton(onPressed: () {
-            controller.animateTo(
-              500,
-              duration: Duration(seconds: 3),
-              curve: Curves.easeOutBack,
-            );
-          }, child: Text("About")),
-          TextButton(onPressed: () {
-            controller.animateTo(
-              1000,
-              duration: Duration(seconds: 3),
-              curve: Curves.easeOutBack,
-            );
-          }, child: Text("Contact")),
+          TextButton(
+              onPressed: () {
+                controller.animateTo(
+                  0,
+                  duration: Duration(seconds: 3),
+                  curve: Curves.easeOutBack,
+                );
+              },
+              child: Text("Home")),
+          TextButton(
+              onPressed: () {
+                controller.animateTo(
+                  500,
+                  duration: Duration(seconds: 3),
+                  curve: Curves.linear,
+                );
+              },
+              child: Text("About")),
+          TextButton(
+              onPressed: () {
+                controller.animateTo(
+                  1000,
+                  duration: Duration(seconds: 3),
+                  curve: Curves.easeOutBack,
+                );
+              },
+              child: Text("Contact")),
           Hero(
             tag: "icon${widget.index}",
             child: Icon(
@@ -174,3 +180,4 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 }
+
