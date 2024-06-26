@@ -1,5 +1,8 @@
+import 'package:anim_test/adv_anim.dart';
 import 'package:anim_test/anim_build.dart';
 import 'package:anim_test/detail_page.dart';
+import 'package:anim_test/home_page.dart';
+import 'package:anim_test/staggered_tween_anim.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,6 +51,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 ));
               },
               icon: Icon(Icons.ac_unit)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return StaggeredTweenAnim();
+                  },
+                ));
+              },
+              icon: Icon(Icons.animation)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return HomePage();
+                  },
+                ));
+              },
+              icon: Icon(Icons.home)),
         ],
       ),
       body: ListView.builder(

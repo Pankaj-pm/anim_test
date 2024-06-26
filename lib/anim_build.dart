@@ -14,12 +14,16 @@ class _AnimBuildState extends State<AnimBuild> with TickerProviderStateMixin {
 
   late AnimationController controller;
   late Animation animation;
+  late Animation<double> ranimation;
 
   @override
   void initState() {
     super.initState();
     controller = AnimationController(vsync: this, duration: Duration(seconds: 2));
-    animation = Tween<double>(begin: 0, end: 360).animate(controller);
+    // animation = Tween<double>(begin: 0, end: 360).animate(controller);
+
+    ranimation = CurvedAnimation(parent: controller, curve: Curves.linear);
+    controller.repeat();
   }
 
   @override
@@ -30,47 +34,59 @@ class _AnimBuildState extends State<AnimBuild> with TickerProviderStateMixin {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0, end: 360),
-              duration: Duration(seconds: 1),
-              builder: (BuildContext context, double value, Widget? child) {
-                return Transform.rotate(
-                  angle: pi * value / 180,
-                  child: Text(
-                    "Hello All",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                );
-              },
-            ),
-            // TweenAnimationBuilder(
-            //   tween: ColorTween(begin: Colors.red, end: Colors.transparent),
-            //   duration: Duration(seconds: 3),
-            //   builder: (context, value, child) {
-            //     return TweenAnimationBuilder(
-            //       tween: Tween<double>(begin: 300, end: 0),
-            //       duration: Duration(seconds: 2),
-            //       builder: (context, value2, child) {
-            //         return Transform.scale(
-            //           scale: value2,
-            //           child: Icon(
-            //             Icons.ac_unit,
-            //             color: value,
-            //           ),
-            //         );
-            //       },
+            // TweenAnimationBuilder<double>(
+            //   tween: Tween(begin: 0, end: 360),
+            //   duration: Duration(seconds: 1),
+            //   builder: (BuildContext context, double value, Widget? child) {
+            //     return Transform.rotate(
+            //       angle: pi * value / 180,
+            //       child: Text(
+            //         "Hello All",
+            //         style: TextStyle(fontSize: 30),
+            //       ),
             //     );
             //   },
             // ),
-            AnimatedBuilder(
-              animation: animation,
-              builder: (context, child) {
-                return Text(
-                  "Hey",
-                  style: TextStyle(fontSize: animation.value * 0.5),
+            TweenAnimationBuilder(
+              tween: ColorTween(begin: Colors.red, end: Colors.transparent),
+              duration: Duration(seconds: 3),
+              builder: (context, value, child) {
+                return TweenAnimationBuilder(
+                  tween: Tween<double>(begin: 300, end: 0),
+                  duration: Duration(seconds: 2),
+                  builder: (context, value2, child) {
+                    return Transform.scale(
+                      scale: value2,
+                      child: Icon(
+                        Icons.ac_unit,
+                        color: value,
+                      ),
+                    );
+                  },
                 );
               },
             ),
+            // AnimatedBuilder(
+            //   animation: animation,
+            //   builder: (context, child) {
+            //     return Text(
+            //       "Hey",
+            //       style: TextStyle(fontSize: animation.value * 0.5),
+            //     );
+            //   },
+            // ),
+            // RotationTransition(
+            //   turns: ranimation,
+            //   child: Container(
+            //     height: 200,
+            //     width: 200,
+            //     decoration: BoxDecoration(
+            //       color: Colors.red,
+            //       shape: BoxShape.circle,
+            //     ),
+            //     child: Text("Play"),
+            //   ),
+            // ),
           ],
         ),
       ),
