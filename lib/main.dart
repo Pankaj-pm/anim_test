@@ -1,7 +1,7 @@
-import 'package:anim_test/adv_anim.dart';
 import 'package:anim_test/anim_build.dart';
 import 'package:anim_test/detail_page.dart';
 import 'package:anim_test/home_page.dart';
+import 'package:anim_test/new_anim_demo.dart';
 import 'package:anim_test/staggered_tween_anim.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return NewAnimNewDemo();
+                  },
+                ));
+              },
+              icon: Icon(Icons.access_alarm)),
           IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
